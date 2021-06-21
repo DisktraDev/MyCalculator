@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mnuCalcutator"
+        android:title="Calculator" />
+    <item
+        android:id="@+id/mnuPercentage"
+        android:title="Percentage" />
+    <item
+        android:id="@+id/mnuCurrency"
+        android:title="Currency" />
+    <item
+        android:id="@+id/mnuTime"
+        android:title="Time" />
+</menu>
