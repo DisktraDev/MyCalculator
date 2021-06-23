@@ -34,48 +34,54 @@ public class PercentageActivity extends AppCompatActivity {
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selectedRadioButton = radioGroup.getCheckedRadioButtonId();
+                String firstText = editTextFirstValue.getText().toString();
+                String secondText = editTextSecondValue.getText().toString();
 
-                double firstValue = Double.parseDouble(editTextFirstValue.getText().toString());
-                double secondValue = Double.parseDouble(editTextSecondValue.getText().toString());
-                double resultValue = 0.0;
+                if (firstText.length() != 0 && secondText.length() != 0) {
+                    int selectedRadioButton = radioGroup.getCheckedRadioButtonId();
 
-                String resultText;
-                boolean isResultPercent = true;
+                    double firstValue = Double.parseDouble(firstText);
+                    double secondValue = Double.parseDouble(secondText);
+                    double resultValue = 0.0;
 
-                switch (selectedRadioButton) {
-                    case R.id.rbPercentFromValue:
-                        Log.d(TAG, "onClick: x% sur un total de y");
-                        resultValue = getPercentFromValue(firstValue, secondValue);
-                        isResultPercent = false;
-                        break;
-                    case R.id.rbValueFromPercent:
-                        Log.d(TAG, "onClick: quel pourcentage de x sur un total de y");
-                        resultValue = getValueFromPercent(firstValue, secondValue);
-                        break;
-                    case R.id.rbRise:
-                        Log.d(TAG, "onClick: x + y%");
-                        resultValue = getRise(firstValue, secondValue);
-                        isResultPercent = false;
-                        break;
-                    case R.id.rbReduce:
-                        Log.d(TAG, "onClick: x - y%");
-                        resultValue = getReduce(firstValue, secondValue);
-                        isResultPercent = false;
-                        break;
-                    case R.id.rbVariation:
-                        Log.d(TAG, "onClick: quel pourcentage entre x et y");
-                        resultValue = getVariation(firstValue, secondValue);
-                        break;
+                    String resultText;
+                    boolean isResultPercent = true;
+
+                    switch (selectedRadioButton) {
+                        case R.id.rbPercentFromValue:
+                            Log.d(TAG, "onClick: x% sur un total de y");
+                            resultValue = getPercentFromValue(firstValue, secondValue);
+                            isResultPercent = false;
+                            break;
+                        case R.id.rbValueFromPercent:
+                            Log.d(TAG, "onClick: quel pourcentage de x sur un total de y");
+                            resultValue = getValueFromPercent(firstValue, secondValue);
+                            break;
+                        case R.id.rbRise:
+                            Log.d(TAG, "onClick: x + y%");
+                            resultValue = getRise(firstValue, secondValue);
+                            isResultPercent = false;
+                            break;
+                        case R.id.rbReduce:
+                            Log.d(TAG, "onClick: x - y%");
+                            resultValue = getReduce(firstValue, secondValue);
+                            isResultPercent = false;
+                            break;
+                        case R.id.rbVariation:
+                            Log.d(TAG, "onClick: quel pourcentage entre x et y");
+                            resultValue = getVariation(firstValue, secondValue);
+                            break;
+                    }
+
+                    resultText = String.format("%.2f", resultValue);
+
+                    if (isResultPercent) {
+                        resultText += " %";
+                    }
+
+                    result.setText(resultText);
                 }
 
-                resultText = String.format("%.2f", resultValue);
-
-                if (isResultPercent) {
-                    resultText += " %";
-                }
-
-                result.setText(resultText);
             }
         };
 
