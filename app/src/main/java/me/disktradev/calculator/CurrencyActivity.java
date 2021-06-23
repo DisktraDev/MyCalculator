@@ -104,7 +104,7 @@ public class CurrencyActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
-                CharSequence text = "Bruh";
+                CharSequence text = "To be implemented";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(context, text, duration);
