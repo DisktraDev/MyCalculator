@@ -15,6 +15,7 @@ public class GetCurrencyJsonData extends AsyncTask<String, Void, String> impleme
     private final String API_KEY = BuildConfig.API_KEY;
     private final String mBaseCurrency;
     private final OnDataAvailable mCallBack;
+    private DownloadStatus mDownloadStatus;
 
     private HashMap<String, String> mCurrencyData;
 
@@ -32,8 +33,8 @@ public class GetCurrencyJsonData extends AsyncTask<String, Void, String> impleme
     protected void onPostExecute(String s) {
         Log.d(TAG, "onPostExecute: starts");
 
-        if (mCallBack != null) {
-            mCallBack.onDataAvailable(mCurrencyData, DownloadStatus.OK);
+        if (mCallBack != null && mDownloadStatus != DownloadStatus.FAILED_OR_EMPTY) {
+            mCallBack.onDataAvailable(mCurrencyData, mDownloadStatus);
         }
 
         Log.d(TAG, "onPostExecute: ends");
@@ -68,7 +69,9 @@ public class GetCurrencyJsonData extends AsyncTask<String, Void, String> impleme
     public void onDownloadComplete(String data, DownloadStatus status) {
         Log.d(TAG, "onDownloadComplete: starts");
 
-        if (status == DownloadStatus.OK) {
+        mDownloadStatus = status;
+
+        if (mDownloadStatus == DownloadStatus.OK) {
             Log.d(TAG, "onDownloadComplete: status is " + status);
             mCurrencyData = new HashMap<>();
             // JSON Parsing
@@ -90,7 +93,7 @@ public class GetCurrencyJsonData extends AsyncTask<String, Void, String> impleme
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.e(TAG, "onDownloadComplete: Error processing JSON data: " + e.getMessage());
-                status = DownloadStatus.FAILED_OR_EMPTY;
+                mDownloadStatus = DownloadStatus.FAILED_OR_EMPTY;
             }
         }
 
