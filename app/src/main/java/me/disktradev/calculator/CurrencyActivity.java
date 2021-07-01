@@ -113,12 +113,11 @@ public class CurrencyActivity extends AppCompatActivity
         View.OnClickListener invertListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = getApplicationContext();
-                CharSequence text = "To be implemented";
-                int duration = Toast.LENGTH_SHORT;
+                int x = spinFrom.getSelectedItemPosition();
+                int y = spinTo.getSelectedItemPosition();
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                spinFrom.setSelection(y);
+                spinTo.setSelection(x);
             }
         };
 
