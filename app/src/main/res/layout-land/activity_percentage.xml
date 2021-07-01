@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Result"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintStart_toStartOf="@+id/editTextSecondValue"
         app:layout_constraintTop_toBottomOf="@+id/editTextSecondValue" />
 
     <TextView
@@ -31,61 +30,65 @@
         android:id="@+id/editTextFirstValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="x"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/editTextSecondValue"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="y"
         android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="@+id/editTextFirstValue"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFirstValue" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:orientation="vertical"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/editTextFirstValue">
 
         <RadioButton
             android:id="@+id/rbPercentFromValue"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="x% from y" />
 
         <RadioButton
             android:id="@+id/rbValueFromPercent"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="on a value of" />
 
         <RadioButton
             android:id="@+id/rbRise"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+ y%" />
 
         <RadioButton
             android:id="@+id/rbReduce"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="- y%" />
 
         <RadioButton
             android:id="@+id/rbVariation"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Variation" />
 
@@ -95,10 +98,10 @@
         android:id="@+id/tvResult"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
         android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/btnPercentResult" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextSecondValue"
+        app:layout_constraintStart_toEndOf="@+id/btnPercentResult"
+        app:layout_constraintTop_toTopOf="@+id/btnPercentResult" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
