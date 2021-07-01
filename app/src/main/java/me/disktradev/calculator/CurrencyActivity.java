@@ -92,6 +92,16 @@ public class CurrencyActivity extends AppCompatActivity
         View.OnClickListener refreshListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (BuildConfig.API_KEY.length() == 0) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "No API key provided.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+
                 GetCurrencyJsonData getCurrencyJsonData = new GetCurrencyJsonData(CurrencyActivity.this, mSelectedCurrencyFrom);
                 getCurrencyJsonData.execute();
             }
